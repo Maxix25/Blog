@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import homepage
+from . import views
 
 urlpatterns = [
-    path("", homepage)
+    path('', views.homepage),
+    path('404/', views.http_404)
 ]

@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 from django.contrib.messages import constants as messages
 
@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'authentication',
-    'staticpages'
+    'staticpages',
+    'posts'
 ]
 
 MIDDLEWARE = [
@@ -118,15 +120,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MESSAGE_TAGS = {
-    messages.INFO: "alert alert-info",
-    messages.ERROR: "alert alert-danger",
-    messages.WARNING: "alert alert-warning",
-    messages.SUCCESS: "alert alert-success"
+    messages.INFO: "bg-blue-500",
+    messages.ERROR: "bg-red-500",
+    messages.WARNING: "bg-yellow-500",
+    messages.SUCCESS: "bg-green-500"
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "darkly"
 }
