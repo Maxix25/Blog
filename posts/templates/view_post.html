@@ -1,12 +1,39 @@
 {% extends "base.html" %}
-
 {% block body %}
-    <div class="container mx-auto py-12">
-        <div class="max-w-2xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h1 class="text-3xl font-bold mb-4 text-white">{{ post.title }}</h1>
-            <p class="text-gray-400 mb-4">Date: {{ post.date }}</p>
-            <p class="text-gray-400 mb-4">Author: {{ post.author }}</p>
-            <p class="text-lg text-white">{{ post.content }}</p>
-        </div>
+<div class="container mx-auto mt-8">
+    <div class="bg-gray-800 shadow-md rounded-lg p-8">
+        <h1 class="text-3xl font-bold mb-4 text-white">{{ post.title }}</h1>
+        <p class="text-lg text-gray-700 mb-4 text-white">{{ post.content }}</p>
+        <p class="text-sm text-gray-600 mb-4 text-white">Date: {{ post.date }}</p>
+        <p class="text-sm text-gray-600 mb-8 text-white">Author: {{ post.author }}</p>
+
+        <h2 class="text-2xl font-bold mb-4 text-white">Comments</h2>
+        <ul>
+            {% for comment in comments %}
+            <li class="flex items-start mb-4">
+                <img src="/static/img/{{ comment.name.image }}" alt="Profile Picture"
+                    class="h-10 w-10 rounded-full mr-4">
+                <div>
+                    <p class="text-lg text-white mb-2">{{ comment.content }}</p>
+                    <p class="text-sm text-white">Date: {{ comment.date }}</p>
+                    <p class="text-sm text-white">Author: {{ comment.name }}</p>
+                </div>
+            </li>
+            {% empty %}
+            <li class="text-white italic">No comments yet.</li>
+            {% endfor %}
+        </ul>
+        <!-- Form to post a comment -->
+        <form action="{% url 'post_comment' post.id %}" method="post" class="mt-8">
+            {% csrf_token %}
+            {{ comment_form.content }}
+            <button type="submit"
+                class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+                Post Comment
+            </button>
+        </form>
+
     </div>
+</div>
 {% endblock %}
+
