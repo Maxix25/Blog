@@ -34,3 +34,10 @@ class Posts(models.Model):
     )
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    id = models.AutoField(primary_key = True)
+    post = models.ForeignKey(Posts, on_delete = models.CASCADE)
+    name = models.CharField(max_length = 20)
+    content = models.CharField(max_length = 100)
+    date = models.DateField(auto_now_add = True)
