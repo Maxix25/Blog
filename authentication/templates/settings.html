@@ -9,21 +9,26 @@
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             
-            <!-- Profile Update Form Fields -->
-            <div class="mb-4">
-                {{ profile_form.as_p }}
-            </div>
-
             <!-- Username Update Form Fields -->
             <div class="mb-4">
-                <label for="id_username" class="block text-sm font-bold mb-2">Username</label>
+                <label for="id_username" class="block text-sm font-bold mb-2 text-white">Username</label>
                 {{ username_form.username }}
+                <label for="id_email" class="block text-sm font-bold mb-2 text-white">Email</label>
+                {{ username_form.email }}
                 {% if username_form.username.errors %}
                     <p class="text-red-500 text-xs italic">{{ username_form.username.errors }}</p>
                 {% endif %}
             </div>
+            <!-- Profile Update Form Fields -->
+            <div class="mb-4 text-white">
+                <label for="id_image" class="block text-sm font-bold mb-2 text-white">Profile Image</label>
+                {{ profile_form.image }}
+                <label for="id_bio" class="block text-sm font-bold mb-2 text-white">Biography</label>
+                {{ profile_form.bio }}
+            </div>
 
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Update Settings</button>
+
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Update Profile</button>
         </form>
     </div>
 </div>
