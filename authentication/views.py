@@ -52,6 +52,8 @@ def login(request):
             return redirect("/auth/login")
         messages.success(request, "Logged in succesfully!")
         auth_login(request, user)
+        if request.GET["next"]: # If the user tried to access a login required view, redirect to that page after login
+            return redirect(request.GET["next"])
         return redirect("/")
     return render(request, "login.html")
 

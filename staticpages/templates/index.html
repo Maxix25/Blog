@@ -147,7 +147,11 @@
     <p class="text-lg text-gray-200">
         Join the community and start engaging in discussions.
     </p>
-    <a href="#" class="forum-link mt-4">Go to Forum</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'create_post' %}" class="forum-link mt-4">Write your question!</a>
+    {% else %}
+        <a href="{% url 'register' %}" class="forum-link mt-4">Join Now!</a>
+    {% endif %}
 </section>
 
 <!-- Featured Topics Section -->

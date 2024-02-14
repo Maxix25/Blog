@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Profile - {{ profile.user.username }}
+{% endblock title %}
+
+{% block body %}
+    <div class="container mx-auto mt-8">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md flex items-center">
+            <div class="mr-4">
+                <img src="{{ profile.image.url }}" class="w-16 h-16 rounded-full" alt="Profile Image">
+            </div>
+            <div>
+                <h1 class="text-3xl font-semibold text-white mb-2">{{ profile.user.username }}</h1>
+                {% if profile.bio %}
+                <p class="text-gray-300">Bio: {{ profile.bio }}</p>
+                {% else %}
+                <p class="text-gray-300 italic">No bio provided</p>
+                {% endif %}
+                <p class="text-gray-300">Posts: {{ posts }}</p>
+                <!-- Add more profile information here -->
+            </div>
+        </div>
+
+        <!-- Recent Posts Section -->
+        <div class="mt-8">
+            <h2 class="text-2xl font-semibold text-white mb-4">Recent Posts</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {% for post in recent_posts %}
+                <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+                    <a href="{% url 'view_post' post.id%}" class="text-xl font-semibold text-white mb-2 hover:text-blue-500">{{ post.title }}</a>
+                    <p class="text-gray-300">{{ post.topic|title }}</p>
+                    <p class="text-gray-400 mt-2">Date: {{ post.date }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock body %}
+

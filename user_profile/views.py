@@ -1,10 +1,21 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from user_profile.forms import ProfileUpdateForm, UsernameUpdateForm
+from .models import Profile
+from posts.models import Posts
 
 # Create your views here.
+
+def view_profile(request, user_id):
+    user = get_object_or_404(User, id = user_id)
+    profile = Profile.objects.get(user = user)
+    posts = Posts.objects.filter(author = profile).count()
+    recent_posts = Posts.objects.filter(author = profile).order_by('date')[:3]
+    return render(request, "view_profile.html", {"profile": profile, "posts": posts, 'recent_posts': recent_posts})
+
 
 @login_required
 def settings(request):

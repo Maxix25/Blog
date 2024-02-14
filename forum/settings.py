@@ -138,3 +138,5 @@ MESSAGE_TAGS = {
 JAZZMIN_UI_TWEAKS = {
     "theme": "darkly"
 }
+
+LOGIN_URL = '/auth/login'
