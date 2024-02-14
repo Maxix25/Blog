@@ -6,7 +6,6 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
-from .forms import ProfileUpdateForm, UsernameUpdateForm
 
 
 
@@ -56,22 +55,7 @@ def login(request):
         return redirect("/")
     return render(request, "login.html")
 
-@login_required
-def settings(request):
-    profile_form = ProfileUpdateForm(instance=request.user.profile)
-    username_form = UsernameUpdateForm(instance = request.user)
-    
-    if request.method == 'POST':
-        profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-        username_form = UsernameUpdateForm(request.POST, instance=request.user)
-        
-        if profile_form.is_valid() and username_form.is_valid():
-            profile_form.save()
-            username_form.save()
-            messages.success(request, "Profile updated succesfully!")
-            return redirect('/auth/settings')  # Redirect to settings page after successful update
-    
-    return render(request, 'settings.html', {'profile_form': profile_form, 'username_form': username_form})
+
 
 @login_required
 def logout(request):

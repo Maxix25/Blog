@@ -1,6 +1,6 @@
 import datetime
 from django.db import models
-from authentication.models import Profile
+from user_profile.models import Profile
 
 PROGRAMMING = "PROGRAMMING"
 PYTHON = "PYTHON"

@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 
 from .forms import PostForm, CommentForm
-from authentication.models import Profile
+from user_profile.models import Profile
 from .models import Posts, Comment
 
 @login_required
