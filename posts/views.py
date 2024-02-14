@@ -1,9 +1,10 @@
 # In views.py
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 
 from .forms import PostForm, CommentForm
 from user_profile.models import Profile
@@ -13,18 +14,14 @@ from .models import Posts, Comment
 def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
-        if not form.is_valid():
+        if form.is_valid():
+            profile = get_object_or_404(Profile, user=request.user)
+            form.instance.author = profile
+            form.save()
+            messages.success(request, "Post created successfully!")
+            return HttpResponseRedirect(reverse('view_post', args=[form.instance.id]))
+        else:
             messages.error(request, "Form is not valid")
-            form = PostForm()
-            return render(request, "create_post.html", {"form": form})
-        # user = User.objects.get(username = request.user)
-        profile = Profile.objects.get(user = request.user)
-        form.instance.author = profile
-        # Save the form data to the database
-        form.save()
-        # Redirect to a success page or homepage
-        messages.success(request, "Post created succesfully!")
-        return redirect('/')  # Adjust 'home' to the name of your homepage URL
     else:
         form = PostForm()
     return render(request, 'create_post.html', {'form': form})
