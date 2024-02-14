@@ -15,7 +15,7 @@ class PostForm(forms.ModelForm):
         model = Posts
         fields = ['title', 'content', 'topic']
         widgets = {
-            'content': forms.Textarea(attrs={'class': 'mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md bg-gray-700, text-white', 'rows': 4}),
+            'content': forms.Textarea(attrs={'class': 'mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md bg-gray-700 text-white', 'rows': 4}),
             'topic': forms.Select(attrs={'class': 'mt-1 block w-full pl-3 pr-10 py-2 text-base bg-gray-700 focus:outline-none focus:ring-blue-500 focus:border-blue-500 border-gray-300 text-white rounded-md'}),
             'title': forms.TextInput(attrs={'class': 'mt-1 block w-full pl-3 pr-10 py-2 text-base bg-gray-700 focus:outline-none focus:ring-blue-500 focus:border-blue-500 border-gray-300 text-white rounded-md'}),
         }
