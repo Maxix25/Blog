@@ -1,4 +1,5 @@
-# In views.py
+import markdown
+import bleach
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
@@ -28,7 +29,9 @@ def create_post(request):
 
 @login_required
 def view_post(request, post_id):
+    md = markdown.Markdown(extensions = ["fenced_code"])
     post = get_object_or_404(Posts, id=post_id)
+    post.content = bleach.clean(md.convert(post.content), strip = True)
     comments = Comment.objects.filter(post = post)
     comment_form = CommentForm()
     return render(request, 'view_post.html', {'post': post, 'comments': comments, "comment_form": comment_form})

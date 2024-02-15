@@ -1,6 +1,6 @@
-import datetime
 from django.db import models
 from user_profile.models import Profile
+from mdeditor.fields import MDTextField
 
 PROGRAMMING = "PROGRAMMING"
 PYTHON = "PYTHON"
@@ -26,7 +26,7 @@ class Posts(models.Model):
     id = models.AutoField(primary_key = True)
     author = models.ForeignKey(Profile, on_delete = models.CASCADE)
     title = models.CharField(max_length = 30)
-    content = models.CharField(max_length = 500)
+    content = MDTextField()
     date = models.DateField(auto_now_add = True)
     topic = models.CharField(
         max_length = 20,
@@ -44,3 +44,5 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.post.title}"
+
+

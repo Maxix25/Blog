@@ -9,5 +9,6 @@ class PostsAdmin(admin.ModelAdmin):
 class CommentAdmin(admin.ModelAdmin):
     pass
 
+
 admin.site.register(Posts, PostsAdmin)
 admin.site.register(Comment, CommentAdmin)
