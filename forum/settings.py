@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'authentication',
     'staticpages',
     'posts',
-    'user_profile'
+    'user_profile',
+    'mdeditor'
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,5 @@ JAZZMIN_UI_TWEAKS = {
 }
 
 LOGIN_URL = '/auth/login'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
