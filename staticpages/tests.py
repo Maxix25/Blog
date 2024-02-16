@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 # Create your tests here.
 
 class HomepageTest(TestCase):
-    # TODO: Finish tests
     
     def setUp(self):
         self.user = User.objects.create_user(username = 'testuser100', password = 'testpassword')
