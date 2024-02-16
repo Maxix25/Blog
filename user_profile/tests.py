@@ -24,6 +24,10 @@ class ProfileModelTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'view_profile.html')
 
+    def test_invalid_profile_view(self):
+        response = self.client.get(reverse('view_profile', args = [1239192391293]))
+        self.assertEqual(response.status_code, 404)
+
 
 
 class SettingsPageTest(TestCase):
