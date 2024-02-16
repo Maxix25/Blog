@@ -1,6 +1,5 @@
 import os
 import shutil
-from django.contrib.staticfiles import finders
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
