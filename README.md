@@ -12,7 +12,7 @@
   - Choose a username and password and you can now login in /admin
 
 ## Routes
-  - /: Home page
+  - ```/```: Home page
   - ```/auth/login```: Login page
   - ```/auth/register```: Register page
   - ```/auth/logout```: Logout page
