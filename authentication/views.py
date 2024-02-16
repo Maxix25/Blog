@@ -16,7 +16,7 @@ def register(request):
     if request.method == "POST":
         if request.POST["password"] != request.POST["confirm_password"]:    # Check if passwords match
             messages.error("Passwords do not match")
-            return redirect(reverse('login'))
+            return redirect(reverse('register'))
         try:
             # Create user in database
             User.objects.create_user(
@@ -27,7 +27,7 @@ def register(request):
         except IntegrityError:
             # Username is already in use
             messages.error(request, "Username or email is already in use")
-            return redirect(reverse('login'))
+            return redirect(reverse('register'))
         # Authenticate user
         user = authenticate(
             username = request.POST["username"],
@@ -35,8 +35,7 @@ def register(request):
         )
         if user is None:
             messages.error(request, "An error ocurred, please try again")
-            return redirect(reverse('login'))
-        # login(request, user)
+            return redirect(reverse('register'))
         messages.success(request, "Account created succesfully, you may now login")
         return redirect(reverse('login'))
     return render(request, "register.html")

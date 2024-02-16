@@ -23,7 +23,7 @@ class PostsTestCase(TestCase):
     def test_post_detail_view(self):
         self.client.force_login(self.user)
         response = self.client.get(reverse('view_post', args=[self.post.id]))
-        self.assertIn(response.status_code, [200, 302])
+        self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.post.content)
 
     def test_post_create_view(self):

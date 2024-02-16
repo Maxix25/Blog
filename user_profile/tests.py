@@ -5,6 +5,20 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import Profile
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.conf import settings
+
+
+class ProfileModelTest(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username = 'testuser', password = 'testpassword')
+        self.profile = Profile.objects.get(user = self.user)
+    
+    def test_profile_image_url(self):
+        self.assertEqual(self.profile.image.url, settings.STATIC_URL + 'profile_pics/default.jpeg')
+    
+    def test_primary_key(self):
+        self.assertEqual(self.user, self.profile.user)
+
 
 
 class SettingsPageTest(TestCase):
