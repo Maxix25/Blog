@@ -19,6 +19,11 @@ class ProfileModelTest(TestCase):
     
     def test_primary_key(self):
         self.assertEqual(self.user, self.profile.user)
+    
+    def test_profile_view(self):
+        response = self.client.get(reverse('view_profile', args = [self.user.pk]))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'view_profile.html')
 
 
 
