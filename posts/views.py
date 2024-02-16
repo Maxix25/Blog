@@ -6,10 +6,18 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
-
-from .forms import PostForm, CommentForm
 from user_profile.models import Profile
+from .forms import PostForm, CommentForm
 from .models import Posts, Comment
+from markdown.extensions.codehilite import CodeHiliteExtension
+
+
+ALLOWED_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'img', 'p', 'pre', 'code', 'span']
+ALLOWED_ATTRIBUTES = {
+    "a": ["href"],
+    'img': ['src', 'alt']
+}
+
 
 @login_required
 def create_post(request):
@@ -20,7 +28,7 @@ def create_post(request):
             form.instance.author = profile
             form.save()
             messages.success(request, "Post created successfully!")
-            return HttpResponseRedirect(reverse('view_post', args=[form.instance.id]))
+            return redirect(reverse('view_post', args=[form.instance.id]))
         else:
             messages.error(request, "Form is not valid")
     else:
@@ -29,9 +37,9 @@ def create_post(request):
 
 @login_required
 def view_post(request, post_id):
-    md = markdown.Markdown(extensions = ["fenced_code"])
+    md = markdown.Markdown(extensions = ["fenced_code", CodeHiliteExtension()])
     post = get_object_or_404(Posts, id=post_id)
-    post.content = bleach.clean(md.convert(post.content), strip = True)
+    post.content = bleach.clean(md.convert(post.content), tags = ALLOWED_TAGS, attributes = ALLOWED_ATTRIBUTES)
     comments = Comment.objects.filter(post = post)
     comment_form = CommentForm()
     return render(request, 'view_post.html', {'post': post, 'comments': comments, "comment_form": comment_form})

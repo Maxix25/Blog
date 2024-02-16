@@ -8,9 +8,14 @@
             <h2 class="text-2xl font-bold mb-4 text-white">Create Post</h2>
             {% csrf_token %}
             {{ form.media }}
-            {{ form.as_p }}
+            <label for="id_title" class="text-white font-bold">Title:</label>
+            {{ form.title }}
+            <label for="id_content" class="text-white font-bold">Content:</label>
+            {{ form.content }}
+            <label for="id_topic" class="text-white font-bold">Topic:</label>
+            {{ form.topic }}
             <div class="flex justify-end">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-600 focus:ring-blue-500 focus:ring-offset-blue-200 text-white font-semibold py-2 px-4 border border-transparent rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-600 focus:ring-blue-500 focus:ring-offset-blue-200 text-white font-semibold py-2 px-4 border border-transparent rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 mt-2">
                     Post
                 </button>
             </div>

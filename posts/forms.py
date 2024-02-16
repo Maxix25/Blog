@@ -1,17 +1,7 @@
-# In forms.py
 from django import forms
 from .models import Posts
-from mdeditor.fields import MDTextFormField
 
 class PostForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['content'].label = 'Your Question:'
-        self.fields['topic'].label = 'Select Topic:'
-
-        # Add CSS classes to labels
-        self.fields['content'].label_attr = {'class': 'text-white font-bold'}
-        self.fields['topic'].label_attr = {'class': 'text-white font-bold'}
     class Meta:
         model = Posts
         fields = ['title', 'content', 'topic']
