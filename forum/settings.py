@@ -13,6 +13,7 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 from django.contrib.messages import constants as messages
+from django.urls import reverse
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -142,6 +143,6 @@ JAZZMIN_UI_TWEAKS = {
     "theme": "darkly"
 }
 
-LOGIN_URL = '/auth/login'
+LOGIN_URL = '/auth/login/'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'

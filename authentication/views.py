@@ -6,6 +6,7 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
 
 
@@ -15,7 +16,7 @@ def register(request):
     if request.method == "POST":
         if request.POST["password"] != request.POST["confirm_password"]:    # Check if passwords match
             messages.error("Passwords do not match")
-            return redirect("/auth/login")
+            return redirect(reverse('login'))
         try:
             # Create user in database
             User.objects.create_user(
@@ -26,7 +27,7 @@ def register(request):
         except IntegrityError:
             # Username is already in use
             messages.error(request, "Username or email is already in use")
-            return redirect("/auth/login")
+            return redirect(reverse('login'))
         # Authenticate user
         user = authenticate(
             username = request.POST["username"],
@@ -34,10 +35,10 @@ def register(request):
         )
         if user is None:
             messages.error(request, "An error ocurred, please try again")
-            return redirect("/auth/login")
+            return redirect(reverse('login'))
         # login(request, user)
         messages.success(request, "Account created succesfully, you may now login")
-        return redirect("/auth/login")
+        return redirect(reverse('login'))
     return render(request, "register.html")
 
 def login(request):
@@ -49,7 +50,7 @@ def login(request):
         )
         if user is None:
             messages.error(request, "Credentials are not valid")
-            return redirect("/auth/login")
+            return redirect(reverse('login'))
         messages.success(request, "Logged in succesfully!")
         auth_login(request, user)
         if request.GET.get('next'): # If the user tried to access a login required view, redirect to that page after login
@@ -63,4 +64,4 @@ def login(request):
 def logout(request):
     auth_logout(request)
     messages.success(request, "Logged out succesfully!")
-    return redirect("/auth/login")
+    return redirect(reverse('login'))

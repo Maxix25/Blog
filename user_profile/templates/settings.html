@@ -3,7 +3,7 @@
 {% block body %}
 <div class="container mx-auto py-12">
     <div class="max-w-md mx-auto bg-gray-800 p-6 rounded-lg shadow-md">
-        <h1 class="text-3xl font-bold mb-4">Settings</h1>
+        <h1 class="text-3xl font-bold mb-4 text-white">Settings</h1>
         
         <!-- Settings Update Form -->
         <form method="post" enctype="multipart/form-data">
@@ -11,7 +11,7 @@
             
             <!-- Username Update Form Fields -->
             <div class="mb-4">
-                <label for="id_username" class="block text-sm font-bold mb-2 text-white">Username</label>
+                <label for="id_username" class="block text-sm font-bold mb-2 mt-2 text-white">Username</label>
                 {{ username_form.username }}
                 <label for="id_email" class="block text-sm font-bold mb-2 text-white">Email</label>
                 {{ username_form.email }}
@@ -23,7 +23,7 @@
             <div class="mb-4 text-white">
                 <label for="id_image" class="block text-sm font-bold mb-2 text-white">Profile Image</label>
                 {{ profile_form.image }}
-                <label for="id_bio" class="block text-sm font-bold mb-2 text-white">Biography</label>
+                <label for="id_bio" class="block text-sm font-bold mb-2 text-white mt-2">Biography</label>
                 {{ profile_form.bio }}
             </div>
 
