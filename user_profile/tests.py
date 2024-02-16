@@ -1,4 +1,5 @@
 import os
+import shutil
 from django.contrib.staticfiles import finders
 from django.test import TestCase
 from django.urls import reverse
@@ -25,10 +26,19 @@ class SettingsPageTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='testuser', password='testpassword')
         self.client.login(username='testuser', password='testpassword')
+    
+    def tearDown(self):
+        try:
+            base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            absolute_path = os.path.join(base_dir, 'static', 'profile_pics', 'newusername')
+            shutil.rmtree(absolute_path + '/')
+        except FileNotFoundError:
+            pass
 
     def test_settings_page_view(self):
         response = self.client.get(reverse('settings'))
         self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'settings.html')
 
     def test_settings_page_view_post(self):
         # Create a temporary image file
