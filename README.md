@@ -12,4 +12,13 @@
   - Choose a username and password and you can now login in /admin
 
 ## Routes
-
+  - /: Home page
+  - /auth/login: Login page
+  - /auth/register: Register page
+  - /auth/logout: Logout page
+  - /posts/create: Create a post page *Login Required*
+  - /posts/view/<int:post_id>: Given an post ID, view the post
+  - /posts/post_comment: Comment on a post *Login Required*
+  - /profile/settings: Settings page *Login Required*
+  - /profile/<int:user_id>: Given an ID, view the user's profile
+  - /404: 404 page
