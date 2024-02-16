@@ -22,3 +22,8 @@
   - ```/profile/settings```: Settings page *Login Required*
   - ```/profile/<int:user_id>```: Given an ID, view the user's profile
   - ```/404```: 404 page
+
+## Before pushing changes
+  - Test the app using ```python3 manage.py test```
+  - If all the tests succeed you can push your changes using ```git add <files>```
+  - Commit and push your changes using ```git commit -m <commit_message>``` and ```git push origin master```
