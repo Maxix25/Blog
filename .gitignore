@@ -3,3 +3,4 @@ env/
 db.sqlite3
 static/profile_pics/*
 .env
+__pycache__/
