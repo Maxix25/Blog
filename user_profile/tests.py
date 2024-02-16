@@ -35,7 +35,7 @@ class SettingsPageTest(TestCase):
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
         # Get the absolute path of the file in the static folder of your app
-        absolute_path = os.path.join(base_dir, 'static', 'profile_pics', self.user.username, 'resume.png')
+        absolute_path = os.path.join(base_dir, 'static', 'profile_pics', 'testimage.jpeg')
         with open(absolute_path, 'rb') as img:
             response = self.client.post(reverse('settings'), {
                 'username': 'newusername',
