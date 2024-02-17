@@ -5,7 +5,7 @@
   - Install the dependencies using ```pip3 install -r requirements.txt```
   - Commit all migrations to create the database using ```python3 manage.py migrate```
   - Generate the server's secret key using ```python3 generate_key.py```
-  - Add a line to the ```.env``` file and set the timezone appending ```TIME_ZONE=<your_timezone>```, you can find your time zone [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+  - Add a line to the ```.env``` file and set the timezone appending ```TIME_ZONE=<your_timezone>```, you can find your time zone [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones){:target="_blank"}
   - Run the server using ```python3 manage.py runserver```
 
 ## Creating superuser
