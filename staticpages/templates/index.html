@@ -160,31 +160,17 @@
         <h2 class="text-3xl font-bold mb-8">Featured Topics</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Sample Topic Card (Repeat for each featured topic) -->
+            {% for post in featured_posts %}
             <div class="bg-gray-900 rounded-lg p-6 shadow-md">
-                <h3 class="text-xl font-semibold mb-4">Topic Title</h3>
+                <a href="{% url 'view_post' post.id %}" class="text-xl font-semibold mb-4 hover:text-blue-500">{{ post.title }}</a>
                 <p class="text-gray-400">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit. Nulla venenatis nisl id metus convallis, id
-                    suscipit orci tincidunt.
+                    {{ post.content }}
                 </p>
+                <p class="italic">Comments: {{ post.num_comments }}</p>
             </div>
-            <!-- Additional Topic Cards (Repeat as needed) -->
-            <div class="bg-gray-900 rounded-lg p-6 shadow-md">
-                <h3 class="text-xl font-semibold mb-4">Topic Title</h3>
-                <p class="text-gray-400">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit. Nulla venenatis nisl id metus convallis, id
-                    suscipit orci tincidunt.
-                </p>
-            </div>
-            <div class="bg-gray-900 rounded-lg p-6 shadow-md">
-                <h3 class="text-xl font-semibold mb-4">Topic Title</h3>
-                <p class="text-gray-400">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit. Nulla venenatis nisl id metus convallis, id
-                    suscipit orci tincidunt.
-                </p>
-            </div>
+            {% empty %}
+            <p class="italic">No featured comments</p>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -194,39 +180,17 @@
     <h2 class="text-3xl font-bold mb-8">Recent Discussions</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <!-- Sample Discussion Card (Repeat for each recent discussion) -->
+        {% for post in recent_posts %}
         <div class="bg-gray-900 rounded-lg p-6 shadow-md">
-            <h3 class="text-xl font-semibold mb-4">Discussion Title</h3>
-            <p class="text-gray-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Nulla venenatis nisl id metus convallis, id suscipit
-                orci tincidunt.
+            <a href="{% url 'view_post' post.id %}" class="text-xl font-semibold mb-4 hover:text-blue-500">{{ post.title }}</a>
+            <p class="text-gray-400 mt-2">
+                {{ post.content }}
             </p>
+            <p class="italic">Date: {{ post.date }}</p>
         </div>
-        <!-- Additional Discussion Cards (Repeat as needed) -->
-        <div class="bg-gray-900 rounded-lg p-6 shadow-md">
-            <h3 class="text-xl font-semibold mb-4">Discussion Title</h3>
-            <p class="text-gray-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Nulla venenatis nisl id metus convallis, id suscipit
-                orci tincidunt.
-            </p>
-        </div>
-        <div class="bg-gray-900 rounded-lg p-6 shadow-md">
-            <h3 class="text-xl font-semibold mb-4">Discussion Title</h3>
-            <p class="text-gray-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Nulla venenatis nisl id metus convallis, id suscipit
-                orci tincidunt.
-            </p>
-        </div>
-        <div class="bg-gray-900 rounded-lg p-6 shadow-md">
-            <h3 class="text-xl font-semibold mb-4">Discussion Title</h3>
-            <p class="text-gray-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Nulla venenatis nisl id metus convallis, id suscipit
-                orci tincidunt.
-            </p>
-        </div>
+        {% empty %}
+        <p class="text-white italic">No recent posts</p>
+        {% endfor %}
     </div>
 </section>
 

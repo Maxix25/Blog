@@ -13,7 +13,7 @@
         <ul>
             {% for comment in comments %}
             <li class="flex items-start mb-4">
-                <img src="/static/img/{{ comment.name.image }}" alt="Profile Picture"
+                <img src="{{ comment.name.image.url }}" alt="Profile Picture"
                     class="h-10 w-10 rounded-full mr-4">
                 <div>
                     <p class="text-lg text-white mb-2">{{ comment.content }}</p>

@@ -27,7 +27,7 @@ class Posts(models.Model):
     author = models.ForeignKey(Profile, on_delete = models.CASCADE)
     title = models.CharField(max_length = 30)
     content = MDTextField()
-    date = models.DateField(auto_now_add = True)
+    date = models.DateTimeField(auto_now_add = True)
     topic = models.CharField(
         max_length = 20,
         choices = TOPICS
