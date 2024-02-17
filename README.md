@@ -14,6 +14,7 @@
 
 ## Routes
   - ```/```: Home page
+  - ```/admin```: Admin panel
   - ```/auth/login```: Login page
   - ```/auth/register```: Register page
   - ```/auth/logout```: Logout page
