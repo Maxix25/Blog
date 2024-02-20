@@ -8,6 +8,10 @@
   - Add a line to the ```.env``` file and set the timezone appending ```TIME_ZONE=<your_timezone>```, you can find your time zone <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank">here</a>
   - Run the server using ```python3 manage.py runserver```
 
+## How to run (Docker container)
+  - Run ```docker compose up -d --build```
+  - Now you can access the server on http://127.0.0.1:8000/
+
 ## Creating superuser
   - To create a superuser use the command ```python3 manage.py createsuperuser```
   - Choose a username and password and you can now login in /admin
@@ -29,3 +33,4 @@
   - Test the app using ```python3 manage.py test```
   - If all the tests succeed you can push your changes using ```git add <files>```
   - Commit and push your changes using ```git commit -m <commit_message>``` and ```git push origin master```
+
