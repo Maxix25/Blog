@@ -41,7 +41,6 @@ def register(request):
     return render(request, "register.html")
 
 def login(request):
-    # messages.success(request, "Credentials are not valid")
     if request.method == "POST":
         user = authenticate(
             username = request.POST["username"],
