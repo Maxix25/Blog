@@ -1,6 +1,6 @@
 # Blog
 ## How to run
-  - First, clone the repository using ```git clone https://github.com/Maxix25/Forum.git``` and cd into the new folder using ```cd Forum```
+  - First, clone the repository using ```git clone https://github.com/Maxix25/Blog.git``` and cd into the new folder using ```cd Blog```
   - Secondly, create a virtual environment using ```python3 -m venv env``` and activate it using ```source env/bin/activate```
   - Install the dependencies using ```pip3 install -r requirements.txt```
   - Commit all migrations to create the database using ```python3 manage.py migrate```
