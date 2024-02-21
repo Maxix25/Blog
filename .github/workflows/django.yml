@@ -11,6 +11,7 @@ jobs:
     env:
       TIME_ZONE: 'America/Santiago'
       DEBUG: True
+      SECRET_KEY: 9k3_832o#w0^2eyzi^nhi!r1dr=+m92l%^07w&y%_dxf8m@m+9
 
     runs-on: ubuntu-latest
     strategy:
