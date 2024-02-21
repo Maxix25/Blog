@@ -1,4 +1,4 @@
-# Forum
+# Blog
 ## How to run
   - First, clone the repository using ```git clone https://github.com/Maxix25/Forum.git``` and cd into the new folder using ```cd Forum```
   - Secondly, create a virtual environment using ```python3 -m venv env``` and activate it using ```source env/bin/activate```
