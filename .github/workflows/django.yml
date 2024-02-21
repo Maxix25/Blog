@@ -10,6 +10,7 @@ jobs:
   build:
     env:
       TIME_ZONE: 'America/Santiago'
+      DEBUG: True
 
     runs-on: ubuntu-latest
     strategy:

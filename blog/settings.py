@@ -17,6 +17,7 @@ from django.contrib.messages import constants as messages
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
+env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -99,7 +100,7 @@ DATABASES = {
 
         'USER': env.str('DB_USER', default = ''),
 
-        'PASSWORD': env.str('DB_PASSWORD'),
+        'PASSWORD': env.str('DB_PASSWORD', default = ''),
 
         'HOST': env.str('DB_HOST', default = ''),
 
