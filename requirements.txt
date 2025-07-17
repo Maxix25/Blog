@@ -1,6 +1,6 @@
 asgiref==3.7.2
 bleach==6.1.0
-Django==5.0.3
+Django==5.1.10
 django-environ==0.11.2
 django-jazzmin==2.6.0
 django-mdeditor==0.1.20
