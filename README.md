@@ -5,6 +5,13 @@
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+<img width="1874" height="886" alt="image" src="https://github.com/user-attachments/assets/9ff7e7be-f665-4410-8c7d-736a59cc91c4" />
+
+## Features
+- Comment on posts
+- Edit profile picture and user detials (bio, username, email)
+- Login and Register
+- Unit tests
 
 ## How to run
   - First, clone the repository using ```git clone https://github.com/Maxix25/Blog.git``` and cd into the new folder using ```cd Blog```
