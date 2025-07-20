@@ -27,7 +27,7 @@ env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = str(env.str('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DEBUG', default = False)
+DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = ['blog-ek05.onrender.com', 'localhost', '127.0.0.1']
 
@@ -94,17 +94,17 @@ DATABASES = {
 
     'default': {
 
-        'ENGINE': env.str('DB_ENGINE', default = 'django.db.backends.sqlite3'),
+        'ENGINE': env.str('DB_ENGINE', default='django.db.backends.sqlite3'),
 
-        'NAME': env.str('DB_NAME', default = BASE_DIR / 'db.sqlite3'),
+        'NAME': env.str('DB_NAME', default=BASE_DIR / 'db.sqlite3'),
 
-        'USER': env.str('DB_USER', default = ''),
+        'USER': env.str('DB_USER', default=''),
 
-        'PASSWORD': env.str('DB_PASSWORD', default = ''),
+        'PASSWORD': env.str('DB_PASSWORD', default=''),
 
-        'HOST': env.str('DB_HOST', default = ''),
+        'HOST': env.str('DB_HOST', default=''),
 
-        'PORT': env.int('DB_PORT', default = 5432),
+        'PORT': env.int('DB_PORT', default=5432),
 
     }
 
@@ -163,7 +163,6 @@ JAZZMIN_UI_TWEAKS = {
 LOGIN_URL = '/auth/login/'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-<<<<<<< HEAD
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -177,5 +176,3 @@ LOGGING = {
         'level': 'DEBUG',
     },
 }
-=======
->>>>>>> 4d276c1 (Fix static files)
